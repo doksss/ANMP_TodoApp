@@ -18,13 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="30dp"
-        android:background="#F37474"
         android:clickable="true"
-        android:foregroundTint="#E18888"
-        android:src="@drawable/baseline_edit_note_24"
-        android:tint="#CD6B6B"
-        app:backgroundTint="#ECBCBC"
-        app:rippleColor="@color/teal_200" />
+        android:src="@drawable/baseline_edit_note_24" />
 
     <TextView
         android:id="@+id/txtError"
