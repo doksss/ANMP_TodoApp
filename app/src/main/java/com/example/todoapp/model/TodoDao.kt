@@ -1,5 +1,6 @@
 package com.example.todoapp.model
 
+import android.icu.text.CaseMap.Title
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -23,4 +24,8 @@ interface TodoDao {
 
     @Update //boleh pake Query manual mau delete,insert,ataupun update
     fun updateTodo(todo:Todo)
+
+    //ini update yg pake Query Manual boleh aja pake yg mana
+    @Query("Update todo set title=:title, notes=:notes, priority=:priority where uuid=:uuid")
+    fun update(title: String, notes:String, priority:Int,uuid:Int)
 }

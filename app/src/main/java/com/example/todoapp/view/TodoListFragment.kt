@@ -18,7 +18,7 @@ import com.example.todoapp.viewmodel.ListTodoViewModel
 class TodoListFragment : Fragment() {
 
     private lateinit var binding: FragmentTodoListBinding
-    private var adapter = TodoListAdapter(arrayListOf())
+    private var adapter = TodoListAdapter(arrayListOf(), {todo -> viewModel.clearTask(todo) })
     private lateinit var viewModel:ListTodoViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

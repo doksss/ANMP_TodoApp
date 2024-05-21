@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.todoapp.util.DB_NAME
+import com.example.todoapp.util.MIGRATION_1_2
 
-@Database(entities = arrayOf(Todo::class), version = 1)
+//jika melakukan migration maka version dinaikian 1 tingkat
+@Database(entities = arrayOf(Todo::class), version = 2)
 abstract class TodoDatabase:RoomDatabase() {
     abstract fun todoDao():TodoDao
     companion object{
@@ -15,7 +18,7 @@ abstract class TodoDatabase:RoomDatabase() {
         fun buildDatabase(context:Context)=
             Room.databaseBuilder(
                 context.applicationContext,TodoDatabase::class.java,
-                "newtodb").build()
+                DB_NAME).addMigrations(MIGRATION_1_2).build()
 
         operator fun invoke(context: Context){
             if(instance!=null){
