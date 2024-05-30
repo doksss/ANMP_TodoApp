@@ -25,6 +25,13 @@ class DetailTodoViewModel(application: Application):AndroidViewModel(application
             todoLD.postValue(db.todoDao().selectTodo(uuid))
         }
     }
+
+    //bisa query biasa ga dijadikan object
+    fun update(todo: Todo){
+        launch {
+            buildDb(getApplication()).todoDao().updateTodo(todo)
+        }
+    }
     fun addTodo(todo: Todo){
         launch {
 //            val db = TodoDatabase.buildDatabase(getApplication())
