@@ -36,7 +36,7 @@ class CreateTodoFragment : Fragment() {
 
         binding.btnAdd.setOnClickListener{
             val radio = view.findViewById<RadioButton>(binding.radioGroupPriority.checkedRadioButtonId)
-            val todo = Todo(binding.txtTitle.text.toString(), binding.txtNotes.text.toString(), radio.tag.toString().toInt())
+            val todo = Todo(binding.txtTitle.text.toString(), binding.txtNotes.text.toString(), radio.tag.toString().toInt(), 0)
             viewModel.addTodo(todo)
             Toast.makeText(context, "Todo Created",Toast.LENGTH_SHORT).show()
             Navigation.findNavController(it).popBackStack()

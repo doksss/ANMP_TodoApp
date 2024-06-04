@@ -13,7 +13,10 @@ interface TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg todo: Todo)
 
-    @Query("SELECT * FROM todo ORDER BY priority desc")
+//    @Query("SELECT * FROM todo ORDER BY priority desc")
+//    fun selectAllTodo():List<Todo>
+
+    @Query("SELECT * FROM todo where is_done = 0 ORDER BY priority desc")
     fun selectAllTodo():List<Todo>
 
     @Query("SELECT * FROM todo WHERE uuid= :id")
@@ -28,4 +31,7 @@ interface TodoDao {
     //ini update yg pake Query Manual boleh aja pake yg mana
     @Query("Update todo set title=:title, notes=:notes, priority=:priority where uuid=:uuid")
     fun update(title: String, notes:String, priority:Int,uuid:Int)
+
+    @Query("Update todo set is_done=1 where uuid=:uuid")
+    fun updateIsDone(uuid:Int)
 }
