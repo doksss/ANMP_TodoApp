@@ -22,7 +22,7 @@ abstract class TodoDatabase:RoomDatabase() {
 //                DB_NAME).addMigrations(MIGRATION_1_2).build()
 
                 context.applicationContext,TodoDatabase::class.java,
-                DB_NAME).addMigrations(MIGRATION_2_3).build()
+                DB_NAME).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build()
 
         operator fun invoke(context: Context){
             if(instance!=null){
