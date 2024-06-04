@@ -13,7 +13,7 @@ data class Todo(
     @ColumnInfo(name="priority")
     var priority:Int,
     @ColumnInfo(name="is_done")
-    var is_done:Int,
+    var is_done:Int, //menggunakan int karena sqlite tidak ada tipe boolean adanya int
 ){
     @PrimaryKey(autoGenerate = true)
     var uuid:Int = 0
