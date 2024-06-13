@@ -14,6 +14,8 @@ data class Todo(
     var priority:Int,
     @ColumnInfo(name="is_done")
     var is_done:Int, //menggunakan int karena sqlite tidak ada tipe boolean adanya int
+    @ColumnInfo(name = "todo_date")
+    var todo_date:Int, //menggunakan int karena sqlite tidak ada date, maka pake UNIXTIMESTAMP
 ){
     @PrimaryKey(autoGenerate = true)
     var uuid:Int = 0

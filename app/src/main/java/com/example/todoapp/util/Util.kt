@@ -43,6 +43,13 @@ val MIGRATION_2_3 = object: Migration(2,3){
     }
 }
 
+//Migration dari versi 3 ke 4
+val MIGRATION_3_4 = object: Migration(3,4){
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("ALTER TABLE todo ADD COLUMN todo_date INTEGER default 0 not null")
+    }
+}
+
 class NotificationHelper(val context: Context){
     private val CHANNEL_ID = "todo_channel" //boleh diisi bebas
     private val NOTIFICATION_ID = 1 //angka sembarang
@@ -94,6 +101,8 @@ class NotificationHelper(val context: Context){
     }
 }
 
+//parameter TodoWorker ini udah wajib gaboleh diubah" atau ditambah
+//kalo mau masukin object array dll bisa pake companion object, kalo masukin data yg simple bisa pake inputdata
 class TodoWorker(context: Context, params:WorkerParameters):Worker(context,params){
     override fun doWork(): Result {
         val judul = inputData.getString("title").toString()
